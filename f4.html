@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    height: 100vh;
+    background: url('bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBG 5s linear infinite;
+  }
+
+  @keyframes animateBG {
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #eee;
+  }
+
+  .feedback-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .feedback-fields {
+    display: none;
+    text-align: center;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  @media (max-width: 450px) {
+    .form {
+      width: 100%;
+      padding: 20px;
+    }
+  }
+</style>
+
+<script>
+  function toggleFeedbackFields() {
+    const feedbackFields = document.querySelector('.feedback-fields');
+    const radioYes = document.getElementById('yes');
+
+    feedbackFields.style.display = radioYes.checked ? 'block' : 'none';
+  }
+</script>
+
+</head>
+<body>
+<section>
+  <div class="form">
+    <h2>Do you have any feedback specific to a particular staff member?
+    </h2>
+    <form action="f5.html">
+      <div class="feedback-options">
+        <label><input type="radio" id="yes" name="feedbackOption" value="Yes" onclick="toggleFeedbackFields()" required> Yes</label>
+        <label><input type="radio" id="no" name="feedbackOption" value="No" onclick="toggleFeedbackFields()" required> No</label>
+      </div>
+
+      <div class="feedback-fields">
+        <label>Staff Number:</label>
+        <input type="text" name="staffNumber" placeholder="Enter staff number">
+        
+        <label>Feedback for Staff:</label>
+        <textarea name="staffFeedback" placeholder="Provide feedback for the staff"></textarea>
+      </div>
+
+      <input type="submit" value="Next">
+    </form>
+  </div>
+</section>
+</body>
+</html>

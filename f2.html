@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+    height: 100vh;
+    background: url('bg.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBG 5s linear infinite;
+  }
+
+  @keyframes animateBG {
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  .form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 500px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #eee;
+  }
+
+  @media (max-width: 450px) {
+    .form {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    }
+  }
+</style>
+</head>
+<body>
+<section>
+  <div class="form">
+    <h2>Did our staff meet your expectations in terms of behavior?</h2>
+    <form action="f3.html">
+        <label><input type="radio" name="color" value="VG" required> Very Good</label>
+      <label><input type="radio" name="color" value="G" required> Good</label>
+      <label><input type="radio" name="color" value="Avg" required> Average</label>
+      <label><input type="radio" name="color" value="B" required> Bad</label>
+      <input type="submit" value="Next">
+    </form>
+  </div>
+</section>
+</body>
+</html>

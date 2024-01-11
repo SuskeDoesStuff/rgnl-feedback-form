@@ -19,7 +19,7 @@ $staffNumber = isset($_POST['staffNumber']) ? $_POST['staffNumber'] : null;
 $staffFeedback = isset($_POST['staffFeedback']) ? $_POST['staffFeedback'] : null;
 $generalFeedback = $_POST['feedback'];
 
-$sql = "INSERT INTO myUsers (receipt_number, shopping_experience, staff_behavior, product_quality, 
+$sql = "INSERT INTO feedback (receipt_number, shopping_experience, staff_behavior, product_quality, 
         feedback_option, staff_number, staff_feedback, general_feedback) 
         VALUES ('$receiptNumber', '$shoppingExperience', '$staffBehavior', '$productQuality', 
         '$feedbackOption', '$staffNumber', '$staffFeedback', '$generalFeedback')";

@@ -239,3 +239,16 @@ nav{
     }
 
 }
+
+
+.validation-message{
+   margin-top: 10px;
+   
+    color: red;
+}
+
+
+
+/* #validationReceiptMessage > .validation-message{
+color: black;
+} */

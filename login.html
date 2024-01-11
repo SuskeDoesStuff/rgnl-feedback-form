@@ -20,29 +20,34 @@
             <header>
               <nav>
                   <div class="logo">
-                      <img src="logo.jpg" alt="">
+                      <img src="assets/logo.jpg" alt="">
                   </div>
                   
               </nav>
           </header>
 
             <div class="form">
-                <img src="authentication.svg" alt="" class="form__img">
-
-                <form action="otp.html" class="form__content">
+                <img src="assets/authentication.svg" alt="" class="form__img">
+              
+                <form action="generateOtp.php" method="post" class="form__content" onsubmit="return validateForm()" autocomplete="off">
+                                  
                     <h1 class="form__title">Welcome</h1>
-
+                    
+                    <div id="validationReceiptMessage" style="margin-bottom:30px ;"></div>  
                     <div class="form__div form__div-one">
                         <div class="form__icon">
                           <i class='bx bxs-receipt'></i>
                         </div>
 
                         <div class="form__div-input">
-                            <label for="" class="form__label">Reciept Number</label>
-                            <input type="text" class="form__input">
+                            <label for="" class="form__label"  >Reciept Number</label>
+                               
+                            <input type="text"  name="receiptNumber" class="form__input"  >
+                            
                         </div>
+                       
                     </div>
-
+                   
                     <div class="form__div">
                         <div class="form__icon">
                           <i class='bx bx-mobile-alt'></i>
@@ -50,14 +55,17 @@
 
                         <div class="form__div-input">
                             <label for="" class="form__label">Mobile Number</label>
-                            <input type="tel" class="form__input">
+                            <input type="tel" class="form__input" name="mobileNumber">
+                            
                         </div>
-                    </div>
+                    </div> 
+                    <div id="validationMessage"></div>
+                
 
                     <input type="submit" class="form__button" value="Send OTP">
-
+                    
                     <div class="form__social">
-                        <span class="form__social-text">Contat Us with</span>
+                        <span class="form__social-text">Contact Us with</span>
 
                         <a href="#" class="form__social-icon"><i class='bx bxl-facebook' ></i></a>
                         <a href="#" class="form__social-icon"><i class='bx bxl-google' ></i></a>
@@ -65,7 +73,55 @@
                     </div>
                 </form>
             </div>
+<script>
+function validateForm() {
+    // Fetch the mobile number value
+    var mobileNumber = document.querySelector('.form__input[type="tel"]').value;
 
+    // Fetch the receipt number value
+    var receiptNumber = document.querySelector('.form__input[type="text"]').value;
+     // Get the div where validation messages will be displayed
+     var validationMessageDiv = document.getElementById('validationMessage');
+
+      // Clear any previous validation messages
+       validationMessageDiv.innerHTML = '';
+    
+
+       var validationReceiptMessageDiv = document.getElementById('validationReceiptMessage');
+       validationReceiptMessageDiv.innerHTML='';
+       // Client-side validation for mobile number (10 digits numeric)   
+
+    if (!/^\d{10}$/.test(mobileNumber)) {
+     
+        displayValidationMessage('Please enter a valid 10-digit mobile number.', validationMessageDiv);
+    
+        return false;
+    }
+   
+    if(!receiptNumber){
+        
+        displayValidationMessage('Recipt no cant be empty',validationReceiptMessageDiv);
+        return false;
+    }
+
+
+}
+
+
+
+function displayValidationMessage(message, targetElement) {
+    // Create a new div element for the validation message
+    var validationMessage = document.createElement('div');
+    validationMessage.className = 'validation-message';
+    validationMessage.textContent = message;
+
+    // Append the validation message to the target element
+    targetElement.appendChild(validationMessage);
+}
+
+
+
+    </script>
         </div>
         
         <!-- ===== MAIN JS ===== -->

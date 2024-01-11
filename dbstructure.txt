@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS feedback (
+    receipt_number VARCHAR(50) PRIMARY KEY,
+    phone_number VARCHAR(20),
+    shopping_experience VARCHAR(10),
+    staff_behavior VARCHAR(10),
+    product_quality VARCHAR(10),
+    feedback_option VARCHAR(3),
+    staff_number VARCHAR(50),
+    staff_feedback TEXT,
+    general_feedback TEXT
+);

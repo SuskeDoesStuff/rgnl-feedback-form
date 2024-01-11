@@ -19,16 +19,29 @@ $staffNumber = isset($_POST['staffNumber']) ? $_POST['staffNumber'] : null;
 $staffFeedback = isset($_POST['staffFeedback']) ? $_POST['staffFeedback'] : null;
 $generalFeedback = $_POST['feedback'];
 
-$sql = "INSERT INTO feedback (receipt_number, shopping_experience, staff_behavior, product_quality, 
-        feedback_option, staff_number, staff_feedback, general_feedback) 
-        VALUES ('$receiptNumber', '$shoppingExperience', '$staffBehavior', '$productQuality', 
-        '$feedbackOption', '$staffNumber', '$staffFeedback', '$generalFeedback')";
+// Check if the record with the provided receipt number already exists
+$checkRecord = "SELECT * FROM feedback WHERE receipt_number = '$receiptNumber'";
+$result = $conn->query($checkRecord);
 
+if ($result->num_rows > 0) {
+    // Update the existing record
+    $updateSql = "UPDATE feedback SET
+                  shopping_experience = '$shoppingExperience',
+                  staff_behavior = '$staffBehavior',
+                  product_quality = '$productQuality',
+                  feedback_option = '$feedbackOption',
+                  staff_number = '$staffNumber',
+                  staff_feedback = '$staffFeedback',
+                  general_feedback = '$generalFeedback'
+                  WHERE receipt_number = '$receiptNumber'";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Data inserted successfully";
+    if ($conn->query($updateSql) === TRUE) {
+        echo "Data updated successfully";
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Record with receipt number $receiptNumber does not exist.";
 }
 
 $conn->close();

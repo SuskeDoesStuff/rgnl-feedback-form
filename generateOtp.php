@@ -10,7 +10,7 @@ $mobileNumber = (int)('91' . $_POST['mobileNumber']);
 // }
 
 // Account details
-$apiKey = urlencode('Nzc0MTQ5NmY3MjQ2MzM0MzMwNWEzNDRlMzA1MTRkNTM=');
+$apiKey = urlencode('pee');
 
 // Message details
 $numbers = array($mobileNumber);
